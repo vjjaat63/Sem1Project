@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f6fa;
+            color: #2e323c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            padding: 2% 8%;
+            gap: 1.5%;
+        }
+
+        .profile-sidebar {
+            width: 25%;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-sidebar img {
+            width: 75%;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile-sidebar h5 {
+            font-size: 28px;
+            margin: 2px 0;
+        }
+
+        .profile-sidebar h6 {
+            font-size: 14px;
+            color: #007ae1;
+        }
+
+        .profile-sidebar .about {
+            margin-top: 30px;
+        }
+
+        .profile-sidebar .about h5 {
+            color: #007ae1;
+            font-size: 18px;
+        }
+
+        .profile-sidebar .about ul {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .settings-form {
+            width: 70%;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-form h6 {
+            font-size: 18px;
+            color: #007ae1;
+            margin-bottom: 20px;
+        }
+
+        .settings-form label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .settings-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #cfd1d8;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 2%;
+        }
+
+        .form-group-half {
+            width: 46%;
+        }
+
+        .button-group {
+            text-align: right;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #007ae1;
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .activity {
+            padding: 2vh 20vh;
+            margin: 0px auto;
+            width: 80%;
+            background-color: #fff;
+            height: 50vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="profile-sidebar">
+            <img src="pp.jpeg" User Avatar">
+            <h5>Ankit Jha</h5>
+            <h6>Email: aa24mcf1r05@gmail.com</h6>
+            <div class="about">
+                <h5>Notifications</h5>
+                <ul>
+                    <li>Every second Saturday, the entire city of Warangal undergoes scheduled electricity maintenance
+                        for 2-4 hours. We appreciate your cooperation during this time.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="settings-form">
+            <h6>Personal Details</h6>
+            <form>
+                <div class="form-group">
+                    <div class="form-group-half">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter full name" value="Ankit Jha">
+                    </div>
+                    <div class="form-group-half">
+                        <label for="room-no">Room NO.</label>
+                        <input type="url" id="room-no" placeholder="Enter Room NO." value="B2-41">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-group-half">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" placeholder="Enter phone number" value="8797338604">
+                    </div>
+                    <div class="form-group-half">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter email" value="aa24mcf1r05@student.nitw.ac.in">
+                    </div>
+                </div>
+
+                <h6>Address</h6>
+                <div class="form-group">
+                    <div class="form-group-half">
+                        <label for="street">Street</label>
+                        <input type="text" id="street" placeholder="Enter street">
+                    </div>
+                    <div class="form-group-half">
+                        <label for="city">City</label>
+                        <input type="text" id="city" placeholder="Enter city">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-group-half">
+                        <label for="state">State</label>
+                        <input type="text" id="state" placeholder="Enter state">
+                    </div>
+                    <div class="form-group-half">
+                        <label for="zipCode">Zip Code</label>
+                        <input type="text" id="zipCode" placeholder="Enter zip code">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="activity">
+        <h2>Activity</h2>
+        <p>have to add status of complaints, list of complaints etc
+        </p>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const activitySection = document.querySelector('.activity');
+
+            // Retrieve complaints from localStorage
+            let complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+
+            if (complaints.length === 0) {
+                activitySection.innerHTML += '<p>No complaints found.</p>';
+                return;
+            }
+
+            // Create a table to display complaints
+            const table = document.createElement('table');
+            table.style.width = '100%';
+            table.style.borderCollapse = 'collapse';
+            table.style.marginTop = '20px';
+
+            // Create the table header
+            const headerRow = document.createElement('tr');
+            const headers = ['Serial No', 'Complaint', 'Name', 'Roll No', 'Time of Submission', 'Status', 'Actions'];
+            headers.forEach((headerText) => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                th.style.border = '1px solid #ddd';
+                th.style.padding = '10px';
+                th.style.backgroundColor = '#f2f2f2';
+                th.style.textAlign = 'left';
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            // Add complaints to the table
+            complaints.forEach((complaint, index) => {
+                const row = document.createElement('tr');
+
+                // Add table data cells
+                const dataCells = [
+                    index + 1, // Serial No
+                    complaint.issue, // Complaint
+                    complaint.name, // Name
+                    complaint.rollno, // Roll No
+                    complaint.date, // Time of Submission
+                    'Pending', // Default Status
+                ];
+
+                dataCells.forEach((cellData) => {
+                    const td = document.createElement('td');
+                    td.textContent = cellData;
+                    td.style.border = '1px solid #ddd';
+                    td.style.padding = '10px';
+                    row.appendChild(td);
+                });
+
+                // Add delete button
+                const deleteTd = document.createElement('td');
+                deleteTd.style.border = '1px solid #ddd';
+                deleteTd.style.padding = '10px';
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.style.backgroundColor = '#ff4d4d';
+                deleteButton.style.color = '#fff';
+                deleteButton.style.border = 'none';
+                deleteButton.style.padding = '5px 10px';
+                deleteButton.style.cursor = 'pointer';
+                deleteButton.style.borderRadius = '5px';
+
+                deleteButton.addEventListener('click', () => {
+                    // Remove the complaint from the array
+                    complaints.splice(index, 1);
+
+                    // Update localStorage
+                    localStorage.setItem('complaints', JSON.stringify(complaints));
+
+                    // Re-render the table
+                    renderTable();
+                });
+
+                deleteTd.appendChild(deleteButton);
+                row.appendChild(deleteTd);
+
+                table.appendChild(row);
+            });
+
+            activitySection.appendChild(table);
+
+            function renderTable() {
+                // Clear the table and re-render
+                activitySection.innerHTML = '<h2>Activity</h2>';
+                document.body.removeChild(table);
+                document.body.appendChild(table);
+                document.dispatchEvent(new Event('DOMContentLoaded'));
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <style>
+        :root {
+            --clr: #031b47;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            font-family: "Merienda", cursive;
+            font-optical-sizing: auto;
+            font-weight: 2em;
+            font-style: normal;
+        }
+
+        header {
+            background-color: var(--clr);
+            border-bottom: 6px solid red;
+        }
+
+        .image {
+            justify-content: center;
+            padding-left: 0;
+            background-color: var(--clr);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--clr);
+            color: white;
+
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+
+            margin-top: 10px;
+
+        }
+
+        ul.opt {
+            margin-left: 33px;
+        }
+
+        nav ul li {
+            padding: 5px;
+            margin-left: 20px;
+        }
+
+        header nav .opt a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        li a::after {
+            content: "";
+            display: block;
+            height: 1.5px;
+            width: 100%;
+            background-color: white;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .hoveritems {
+            display: none;
+            position: absolute;
+        }
+
+        .about:hover .hoveritems {
+            display: block;
+            background-color: #121212;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .image {
+            display: flex;
+            justify-content: space-between;
+            width: 100vw;
+        }
+
+        .rt {
+            display: fleX;
+            gap: 100px;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="image">
+                <li><img src="https://www.nitw.ac.in/images/NITW_logo_telugu3.png" class="neg" style="filter: invert();"
+                        alt="NIT logo"></li>
+
+                <div class="rt">
+
+                    <li class="bottom"><img src="https://amritmahotsav.nic.in/writereaddata/portal/images/g-20-logo.png"
+                            alt=""></li>
+                    <li class="bottom"><img
+                            src="https://amritmahotsav.nic.in/writereaddata/portal/images/logo-black.png" alt=""></li>
+                </div>
+
+            </ul>
+            <ul class="opt">
+                <li><a href="homepage.html" target="bottom">Home</a></li>
+                <li><a href="com.html" target="bottom">Complaints</a></li>
+                <li><a href="contact.html" target="bottom">Contact Us</a></li>
+                <li><a href="login.html" target="bottom">Login</a></li>
+                <li><a href="userProfile2.html" target="bottom">Dashboard</a></li>
+                <li><a href="login2.html" target="bottom">Admin</a></li>
+                
+                </ul>
+        </nav>
+    </header>
+
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html'; // Redirect to login page
+        });
+
+    </script>
+
+</body>
+
+</html>

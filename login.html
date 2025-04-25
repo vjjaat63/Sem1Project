@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="2.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            margin-top: ;
+            background-color: #031b47;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group.buttons input[type="submit"],
+        .form-group.buttons input[type="reset"] {
+            width: 45%;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #c4b8b8;
+            cursor: pointer;
+        }
+
+        .form-group.buttons input[type="submit"]:hover,
+        .form-group.buttons input[type="reset"]:hover {
+            background-color: #057dff;
+            color: #ccc;
+
+        }
+
+        .form-group.links {
+            margin-top: 20px;
+        }
+
+        .form-group.links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .form-group.links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="#container">
+        <h2>Login Here</h2>
+        <form action="com.html">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Enter Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group buttons">
+                <input type="submit" value="Submit"></a>
+                <input type="reset" value="Reset">
+            </div>
+            <div class="form-group links">
+                <a href="#">Forgot password?</a> | <a href="regFrom.html">Sign Up Here</a>
+            </div>
+        </form>
+    </div>
+
+   
+<script>
+    document.querySelector('.form-group.buttons input[type="submit"]').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Fetch input values
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Validation
+        if (!username || !password) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        // Retrieve existing users from localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Check if the username and password match any stored user
+        const user = users.find(user => user.username === username && user.password === password);
+
+        if (user) {
+            alert("Login successful!");
+            // Redirect to a new page (if needed)
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = "com.html";
+        } else {
+            alert("INvalid Credentials, kindly register First ");
+
+        }
+    });
+</script>
+
+ 
+</body>
+</html>

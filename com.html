@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b0c9cc;
+        }
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5%;
+            height: max-content;
+        }
+
+        #left-form,
+        #right-form {
+            padding: 30px;
+        }
+
+        #left-form {
+            background-color: white;
+            width: 45%;
+            border-top-left-radius: 3vh;
+            border-bottom-left-radius: 3vh;
+        }
+
+        #right-form {
+            background-color: #2d4472;
+            color: white;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            padding: 3% 2%;
+            line-height: 1.5em;
+            border-top-right-radius: 3vh;
+            border-bottom-right-radius: 3vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-entry {
+            margin-bottom: 20px;
+            width: 48%;
+        }
+
+        .form-entry label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #545454;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-bottom: 2px solid #131555;
+        }
+
+        #submit input[type="submit"] {
+            background-color: #2d4472;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 2vh;
+        }
+
+        #submit input[type="submit"]:hover {
+            background-color: #3c5a8a;
+            transform: scale(1.03);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #submit input[type="submit"]:active {
+            transform: scale(0.98);
+            background-color: #2d4472;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #forms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #submit {
+            margin-top: 20px;
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+        }
+
+        @media (max-width: 1000px) {
+            #right-form {
+                display: none;
+                /* Hide right-form on small screens */
+            }
+
+            #left-form {
+                width: 90%;
+                /* Make left-form take full width */
+            }
+
+            @media (max-width: 600px) {
+                .form-entry {
+                    width: 100%;
+                    /* Make each form entry take full width */
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form">
+        <div id="left-form">
+            <h1>Send Us Your Complaint</h1>
+            <div id="forms">
+                <div class="form-entry">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+                <div class="form-entry">
+                    <label for="rollno">Roll-no*</label>
+                    <input type="number" id="rollno" placeholder="Your roll-no" required>
+                </div>
+                <div class="form-entry">
+                    <label for="email">Email*</label>
+                    <input type="text" id="email" placeholder="Your email" required>
+                </div>
+                <div class="form-entry">
+                    <label for="phone">Phone no.*</label>
+                    <input type="text" id="phone" placeholder="Your phone no." required>
+                </div>
+                <div class="form-entry">
+                    <label for="roomno">Room no.*</label>
+                    <input type="text" id="roomno" placeholder="Your room no." required>
+                </div>
+                <div class="form-entry">
+                    <label for="photo">Upload photo</label>
+                    <input type="file" id="photo">
+                </div>
+                <div class="form-entry" style="width: 100%;">
+                    <label for="issue">Describe your issue</label>
+                    <textarea name="issue" id="issue" placeholder="Describe your issue here"></textarea>
+                </div>
+            </div>
+            <div id="submit">
+                <input type="submit" value="SEND MESSAGE">
+            </div>
+        </div>
+
+        <div id="right-form" class="contact-info">
+            <h3>Contact Information</h3> <br>
+            <p>If you have any queries or need assistance, feel free to reach out to us!</p> <br><br>
+            <p><i class="ri-map-pin-line"></i> NIT Warangal, Warangal, Telangana, India</p>
+            <p><i class="ri-phone-line"></i> +91 (123) 456 7890</p>
+            <p><i class="ri-mail-line"></i> hostel@nitw.ac.in</p>
+        </div>
+    </div>
+    <script>
+        // Check if the user is logged in
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+        // If not logged in, redirect to the login page
+        if (!isLoggedIn || isLoggedIn !== 'true') {
+            alert('You must log in first!');
+            window.location.href = 'login.html'; // Replace with the actual login page path
+        }
+    </script>
+    <script>
+
+
+        // Get the "Send Message" button
+        const sendMessageButton = document.querySelector('#submit input[type="submit"]');
+
+        // Add event listener to handle form submission
+        sendMessageButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get the input values
+            const name = document.getElementById('name').value.trim();
+            const rollno = document.getElementById('rollno').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const roomno = document.getElementById('roomno').value.trim();
+            const issue = document.getElementById('issue').value.trim();
+
+            if (!name || !rollno || !email || !phone || !roomno || !issue) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // Prepare the complaint object
+            const complaint = {
+                name,
+                rollno,
+                email,
+                phone,
+                roomno,
+                issue,
+                date: new Date().toLocaleString(), // Add timestamp
+            };
+
+            // Store the complaint in localStorage
+            const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+            complaints.push(complaint);
+            localStorage.setItem('complaints', JSON.stringify(complaints));
+
+            alert('Your complaint has been submitted successfully!');
+            document.querySelector('form').reset(); // Reset the form
+        });
+
+    </script>
+
+
+</body>
+
+</html>

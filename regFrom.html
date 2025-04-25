@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b0c9cc;
+        }
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5%;
+            height: max-content;
+        }
+        #left-form {
+            padding: 30px;
+            background-color: white;
+            width: 50%;
+            border-radius: 3vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-entry {
+            margin-bottom: 20px;
+            width: 48%;
+        }
+        .form-entry label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #545454;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+            border-bottom: 2px solid #131555;
+        }
+        #submit input[type="submit"] {
+            background-color: #2d4472;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 2vh;
+        }
+        #submit input[type="submit"]:hover {
+            background-color: #3c5a8a;
+            transform: scale(1.03);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        #submit input[type="submit"]:active {
+            transform: scale(0.98);
+            background-color: #2d4472;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        #submit input[type="option"] {
+            padding: 100px;
+        }
+        #forms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        #submit {
+            margin-top: 20px;
+        }
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .contact-info i {
+            margin-right: 10px;
+        }
+        @media (max-width: 1000px) {
+            #left-form {
+                width: 90%;
+            }
+            .form-entry {
+                width: 100%;
+            }
+        }
+        select{
+            width: 200px;
+            height: 35px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="form">
+        <div id="left-form">
+            <h1>Student Registration Form</h1>
+            <div id="forms">
+                <div class="form-entry">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+                <div class="form-entry">
+                    <label for="rollno">Roll-no*</label>
+                    <input type="number" id="rollno" placeholder="Your roll-no" required>
+                </div>
+                <div class="form-entry">
+                    <label for="email">Email*</label>
+                    <input type="text" id="email" placeholder="Your email" required>
+                </div>
+                <div class="form-entry">
+                    <label for="phone">Phone no.*</label>
+                    <input type="text" id="phone" placeholder="Your phone no." required>
+                </div>
+                <div class="form-entry">
+                    <label for="roomno">Room no.*</label>
+                    <input type="text" id="roomno" placeholder="Your room no." required>
+                </div>
+                <div class="form-entry">
+                    <label for="username">Username*</label>
+                    <input type="text" id="username">
+                </div>
+                <div class="form-entry">
+                    <label for="pass">Password*</label>
+                    <input type="text" id="pass">
+                </div>
+                <div class="form-entry">
+                    <label for="pass2">Varify Password*</label>
+                    <input type="text" id="pass2">
+                </div>
+                
+                <div class="form-entry">
+                    <label for="branch">Branch*</label>
+                    <select id="branch" name="branch" required>
+                        <option value="cse">----Select your Course----</option>
+                        <option value="cse">CSE</option>
+                        <option value="me">ME</option>
+                        <option value="ee">EE</option>
+                        <option value="ece">ECE</option>
+                        <option value="ce">CE</option>
+                    </select>
+                </div>
+                <div class="form-entry">
+                    <label for="year">Year of Studying*</label>
+                    <select id="year" name="year" required>
+                        <option value="first">-----Year of Studying-----</option>
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                        <option value="forth">Forth</option>
+                    </select>
+                </div>
+            </div>
+            <div id="submit">
+                <input type="submit" value="REGISTER">
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+             <script>
+                    document.querySelector('#submit input[type="submit"]').addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent form submission
+
+                    // Fetch input values
+                    const username = document.getElementById('username').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('pass').value.trim();
+                    const confirmPassword = document.getElementById('pass2').value.trim();
+
+                    // Validation
+                    if (!username || !email || !password || !confirmPassword) {
+                        alert("Please fill in all fields.");
+                    return;
+        }
+
+                    if (password !== confirmPassword) {
+                        alert("Passwords do not match.");
+                    return;
+        }
+
+                    // Retrieve existing users from localStorage
+                    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Check if username already exists
+        if (users.some(user => user.username === username)) {
+                        alert("Username already exists. Please choose a different username.");
+                    return;
+        }
+
+                    // Add new user to the users array
+                    users.push({username, email, password});
+
+                    // Save updated users back to localStorage
+                    localStorage.setItem('users', JSON.stringify(users));
+
+                    alert("Registration successful!");
+
+                    // Optionally, clear the form
+                    document.getElementById('username').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('pass').value = '';
+                    document.getElementById('pass2').value = '';
+    });
+            </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Complaint Portal</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        section h2 {
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button.delete {
+            background-color: #f44336;
+        }
+
+        button.delete:hover {
+            background-color: #e53935;
+        }
+
+        input {
+            padding: 10px;
+            width: 70%;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Admin Complaint Portal</h1>
+        </header>
+
+        <section class="complaints-list">
+            <h2>Pending Complaints</h2>
+            <ul id="complaintsList"></ul>
+        </section>
+
+        <section class="resolved-complaints">
+            <h2>Resolved Complaints</h2>
+            <ul id="resolvedComplaints"></ul>
+        </section>
+
+
+    </div>
+
+        <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const activitySection = document.querySelector('.complaints-list');
+                const resolvedSection = document.querySelector('.resolved-complaints');
+
+                // Retrieve complaints from localStorage
+                let complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+                let resolvedComplaints = JSON.parse(localStorage.getItem('resolvedComplaints')) || [];
+
+                function renderTable() {
+                    // Clear and re-render pending complaints
+                    activitySection.innerHTML = '<h2>Pending Complaints</h2>';
+                const pendingTable = createTable(complaints, 'pending');
+                activitySection.appendChild(pendingTable);
+
+                // Clear and re-render resolved complaints
+                resolvedSection.innerHTML = '<h2>Resolved Complaints</h2>';
+                const resolvedTable = createTable(resolvedComplaints, 'resolved');
+                resolvedSection.appendChild(resolvedTable);
+        }
+
+                function createTable(data, type) {
+            if (data.length === 0) {
+                return document.createElement('p').appendChild(document.createTextNode(`No ${type} complaints.`));
+            }
+
+                const table = document.createElement('table');
+                table.style.width = '100%';
+                table.style.borderCollapse = 'collapse';
+                table.style.marginTop = '20px';
+
+                // Create the table header
+                const headerRow = document.createElement('tr');
+                const headers = ['Serial No', 'Complaint', 'Name', 'Roll No', 'Time of Submission', 'Status', 'Actions'];
+            headers.forEach((headerText) => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                th.style.border = '1px solid #ddd';
+                th.style.padding = '10px';
+                th.style.backgroundColor = '#f2f2f2';
+                th.style.textAlign = 'left';
+                headerRow.appendChild(th);
+            });
+                table.appendChild(headerRow);
+
+            // Add complaints to the table
+            data.forEach((complaint, index) => {
+                const row = document.createElement('tr');
+
+                // Add table data cells
+                const dataCells = [
+                index + 1, // Serial No
+                complaint.issue, // Complaint
+                complaint.name, // Name
+                complaint.rollno, // Roll No
+                complaint.date, // Time of Submission
+                type === 'resolved' ? 'Resolved' : 'Pending', // Status
+                ];
+
+                dataCells.forEach((cellData) => {
+                    const td = document.createElement('td');
+                td.textContent = cellData;
+                td.style.border = '1px solid #ddd';
+                td.style.padding = '10px';
+                row.appendChild(td);
+                });
+
+                // Add actions button
+                const actionTd = document.createElement('td');
+                actionTd.style.border = '1px solid #ddd';
+                actionTd.style.padding = '10px';
+
+                if (type === 'pending') {
+                    // Delete button for moving to resolved
+                    const resolveButton = document.createElement('button');
+                resolveButton.textContent = 'Resolve';
+                resolveButton.style.backgroundColor = '#4CAF50';
+                resolveButton.style.color = '#fff';
+                resolveButton.style.border = 'none';
+                resolveButton.style.padding = '5px 10px';
+                resolveButton.style.cursor = 'pointer';
+                resolveButton.style.borderRadius = '5px';
+
+                    resolveButton.addEventListener('click', () => {
+                    // Move to resolved complaints
+                    resolvedComplaints.push(complaint);
+                complaints.splice(index, 1);
+
+                // Update localStorage
+                localStorage.setItem('complaints', JSON.stringify(complaints));
+                localStorage.setItem('resolvedComplaints', JSON.stringify(resolvedComplaints));
+
+                // Re-render the tables
+                renderTable();
+                    });
+
+                actionTd.appendChild(resolveButton);
+                } else {
+                    const resolvedText = document.createElement('span');
+                resolvedText.textContent = 'No Action Required';
+                resolvedText.style.color = '#999';
+                actionTd.appendChild(resolvedText);
+                }
+
+                row.appendChild(actionTd);
+                table.appendChild(row);
+            });
+
+                return table;
+        }
+
+                renderTable();
+    });
+        </script>
+
+
+</body>
+
+</html>
